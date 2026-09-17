@@ -1,1 +1,1 @@
-# rsschool-landing-page
+https://diana-dedo.github.io/rsschool-landing-page/

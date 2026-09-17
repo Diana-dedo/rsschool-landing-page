@@ -1,0 +1,85 @@
+/* поправить в хэдаре иконку, сменить шрифт? Выровнять текст и лого */
+
+ul, ol {
+    list-style: none;
+}
+
+a { 
+    color: inherit;
+    text-decoration: none;
+}
+
+html{
+    box-sizing: border-box;
+    font-family: "Intel", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+
+.page {
+    background-color: #E1D4C9;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    /* height: 60px; */
+}
+
+.header_list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.change_dark {
+    display: flex;
+    border: 1px solid #B0907A;
+    border-radius: 60px;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+}
+
+.button_header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* margin-left: auto; */
+    /* justify-content: flex-end; */
+}
+
+.main_photo {
+    display: flex;
+    padding: 0 40;
+}
+
+.main_text {
+display: flex;
+gap: 40px;
+padding-top: 100px;
+padding-left: 140px;
+}
+
+.m_photo {
+    border-radius: 16px;
+}
+
+.footer {
+    display: flex;
+    background-color: #665F55;
+}

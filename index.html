@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resource</title> 
-    <!-- добавить позже стили ссс, подключить шрифты, иконка на вкладке сюда же, подключение джс -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- иконка на вкладке сюда же, подключение джс -->
 </head>
 
-<body>
+<body class="page">
     <header>
         <div class="wrapper header">
         <a href="#">
@@ -19,32 +23,36 @@
                 <li class="header_item">
                     <a href="#coffee" class="link">Favorite coffee</a>
                 </li>
-                <li class="header_list">
+                <li class="header_item">
                     <a href="#about" class="link">About</a>
                 </li>
-                <li class="header_list">
+                <li class="header_item">
                     <a href="#app" class="link">Mobile app</a>
                 </li>
-                <li class="header_list">
+                <li class="header_item">
                     <a href="#contact" class="link">Contact us</a>
                 </li>
             </ul>
         </nav>
-            <div class="change_dark">
-                <img src="./img/light.png" alt="light site">
-                <img src="./img/Dark.png" alt="dark site">
+            <div class="button_header">
+                <div class="change_dark">
+                    <img src="./img/light.png" alt="light site">
+                    <img src="./img/Dark (1).png" alt="dark site">
+                </div>
+                <img src="./img/State=hover.png" alt="menu">
             </div>
-            <img src="./img/State=default.png" alt="menu">
         </div>
     </header>
 
     <main>
         <section class="section">
             <div class="main_photo">
-                <img src="./img/img-hero.jpg" alt="main photo">
-                <span>Enjoy premium coffee at our charming cafe</span>
-                <span>With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</span>
-                <button>Menu</button>
+                <img src="./img/img-hero.jpg" alt="main photo" class="m_photo">
+                <div class="main_text">
+                    <span>Enjoy premium coffee at our charming cafe</span>
+                    <span>With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</span>
+                    <button>Menu</button>
+                </div>
             </div>
 
             <div>
