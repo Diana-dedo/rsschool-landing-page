@@ -53,6 +53,8 @@ html{
     align-items: center;
     gap: 8px;
     padding: 4px;
+    text-align: center;
+    /* width: 88px; */
 }
 
 .button_header {
@@ -63,20 +65,56 @@ html{
     /* justify-content: flex-end; */
 }
 
+/* текст поверх картинки ровнять */
+
 .main_photo {
-    display: flex;
-    padding: 0 40;
+    display: inline-block; 
+    position: relative;
+    padding: 0 40px;
+    max-width: 100%;
+    height: auto;
 }
 
 .main_text {
+position: absolute;
+top: 0;
+left: 40px;
+/* gap: 40px; */
+/* padding-top: 100px; */
+padding-left: 80px;
+width: 50%;
+height: 100%;
 display: flex;
-gap: 40px;
-padding-top: 100px;
-padding-left: 140px;
+flex-direction: column;
+justify-content: center; 
+align-items: flex-start;
+box-sizing: border-box;
 }
 
 .m_photo {
     border-radius: 16px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-family: "Inter", sans-serif;
+    font-size: 72px;
+    font-style: bold;
+    color: #E1D4C9;
+}
+
+.enjoy {
+    color: #B0907A;
+    font-style: italic;
+}
+
+h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-style: regular;
+    color: #E1D4C9;
 }
 
 .footer {
