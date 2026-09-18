@@ -23,7 +23,7 @@ html{
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 .header {
@@ -65,6 +65,7 @@ html{
     /* justify-content: flex-end; */
 }
 
+/* кнопка меню делать */
 /* текст поверх картинки ровнять */
 
 .main_photo {
@@ -96,6 +97,7 @@ box-sizing: border-box;
     display: block;
     width: 100%;
     height: auto;
+    max-width: 1360px;
 }
 
 h1 {
@@ -112,14 +114,114 @@ h1 {
     font-style: italic;
 }
 
-h3 {
+h4 {
     font-family: "Inter", sans-serif;
-    font-size: 16px;
+    font-weight: 16px;
     font-style: regular;
     color: #E1D4C9;
     margin: 0;
     line-height: 1.8;
     width: 90%;
+}
+
+.section_menu {
+    margin: 100px 40px;
+}
+
+.menu_block {
+    display: flex;
+    /* box-sizing: border-box; */
+    justify-content: space-between;
+    /* justify-content: center;     */
+    align-items: center;
+    /* background-color: #E1D4C9; */
+    width: 100%;
+    max-width: 1440px;
+    /* margin: 40px 0 0 0; */
+    margin: 0 auto;
+    /* padding: 0 40px; */
+    position: relative;
+    padding-bottom: 80px;
+}
+
+h2 {
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #403F3D;
+    margin: 0;
+    text-align: center;
+}
+
+h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #403F3D;
+    margin: 0;
+    text-align: center;
+    gap: 16px;
+}
+
+.favorite {
+    color: #B0907A;
+    font-style: italic;
+}
+
+.go_back {
+    /* justify-content: flex-start; */
+    /* justify-content: center; */
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+    /* text-align: center; */
+}
+
+.choose_coffee {
+    display: flex;
+    flex-direction: column;
+    /* box-sizing: border-box; */
+    align-items: center;   
+    text-align: center;
+    width: 500px;
+    gap: 16px;
+}
+
+.h4_dark{
+    color: #403F3D;
+}
+
+.frappuccino {
+    width: 450px;
+    height: auto;
+    margine: 0 0 4px 0;
+}
+
+.go_ahead {
+    justify-content: flex-end;
+    text-align: center;
+    cursor: pointer;
+    width: 60px;
+    height: auto;
+}
+
+.menu_slider {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    /* align-items: flex-end; */
+    gap: 12px;
+    justify-content: center;
+} 
+
+.perfect {
+    color: #B0907A;
+}
+
+.about {
+    max-width: 1380px;
 }
 
 .footer {
