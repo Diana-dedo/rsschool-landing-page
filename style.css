@@ -263,6 +263,40 @@ h3 {
     height: 430px;           
 }
 
+.app {
+    display: flex;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: auto 40px;
+    align-items: center;
+    
+}
+
+.download_app {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: flex-start;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+}
+
+.app_button {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.h2_left {
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #403F3D;
+    margin: 0;
+    text-align: left;
+}
+
 .footer {
     display: flex;
     background-color: #665F55;
