@@ -297,7 +297,78 @@ h3 {
     text-align: left;
 }
 
+.h2_light {
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #E1D4C9;
+}
+
+.h2_dark {
+    font-family: "Inter", sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #B0907A;
+    font-style: italic;
+    /* margin: 0; */
+    text-align: left;
+    margin-bottom: 40px;
+}
+
 .footer {
     display: flex;
     background-color: #665F55;
+    border-radius: 40px;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    align-items: center;
+    height: 450px;
+    width: auto;
+    padding: 0 60px;
+    margin-bottom: 40px;
+    margin-top: 100px;
+}
+
+.h3_light {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #E1D4C9;
+    margin: 0;
+    text-align: start;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.foot_left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+    /* gap: 40px; */
+    flex: 1;
+}
+
+.contact_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+
+}
+
+.h4_foot {
+    width: auto;
+    white-space: nowrap;
+}
+
+.foot_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    gap: 16px;
+    flex: 1;
 }
