@@ -397,3 +397,109 @@ h3 {
     flex: 1;
     margin-left: 50px;
 }
+
+
+/* start catalog here */
+
+.title_catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.slider_catalog {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.coffee_tea_dessert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid #665F55;
+    gap: 12px;
+    background-color: #E1D4C9;
+    padding: 8px 6px; 
+    height: 46px;
+    box-sizing: border-box;
+}
+
+.menu_coffee {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
+    margin: 40px auto;
+}
+
+.catalog_coffee {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #C1B3A8;
+    border-radius: 40px; 
+    padding: 0 0 20px 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 506px;
+    width: 100%;
+}
+
+.coffee_text_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start; 
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 40%;
+}
+
+.coffee_img_wrap {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 40px;
+    transform: scale(1.05); 
+}
+
+.catalog_coffee h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #403F3D;
+    margin-top: 40px;
+    margin-bottom: 0;
+    margin-left: 20px;
+    letter-spacing: 0.5px;
+}
+
+.catalog_coffee .h4_dark {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    color: #403F3D;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.catalog_coffee .price {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #403F3D;
+    margin-top: auto; 
+    margin-bottom: 0;
+    margin-left: 20px;
+    letter-spacing: 1px;
+}
