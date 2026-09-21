@@ -17,6 +17,10 @@ html{
     scroll-behavior: smooth;
 }
 
+.button {
+    cursor: pointer;
+}
+
 .page {
     background-color: #E1D4C9;
     width: 100%;
