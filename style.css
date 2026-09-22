@@ -364,13 +364,16 @@ h3 {
     justify-content: center;
 } 
 
-@media (max-width: 769px) {
-
+@media (max-width: 381px) {
+    .menu_block {
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 381px) {
     .section_menu{
         padding-top: 100px;
+        margin: 0;
     }
     .section_menu h2 {
         font-size: 32px;
@@ -378,6 +381,7 @@ h3 {
     .menu_block {
         max-height: 580px;
         width: 100%;
+        margin-bottom: 0;
     }
     .go_ahead, .go_back {
         display: none;
@@ -393,14 +397,13 @@ h3 {
     }
 }
 
-@media (min-width: 770px) {
 
-}
 
                 /* start block with photo*/
 
 .perfect {
     color: #B0907A;
+    font-style: italic;
 }
 
 .about_main {
@@ -450,6 +453,69 @@ h3 {
     height: 430px;           
 }
 
+@media (min-width: 769px) {
+    .show_in_tablet,.show_in_mob {
+        display: none;
+    }
+}
+
+@media (max-width: 769px) {
+    .about_main {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 100px 0;
+        margin: 0;
+    }
+    .h2_long {
+        font-size: 60px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+    .about {
+        display: flex;
+        flex-direction: column;
+    }
+    .first_col_photo, .second_col_photo {
+        height: auto;
+        width: 100%;
+    }
+    .show_in_tablet {
+        display: inline;
+    }
+    .img_short, .show_in_pk, .show_in_mob{
+        display: none;
+    }
+}
+
+@media (max-width: 381px) {
+    .about_main {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 100px 0;
+        margin: 0;
+    }
+    .h2_long {
+        font-size: 32px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+    .about {
+        display: flex;
+        flex-direction: column;
+    }
+    .first_col_photo, .second_col_photo {
+        height: auto;
+        width: 100%;
+    }
+    .show_in_mob {
+        display: inline;
+    }
+    .img_short, .show_in_pk, .show_in_tablet{
+        display: none;
+    }
+}
 
                 /* start app block */
 
