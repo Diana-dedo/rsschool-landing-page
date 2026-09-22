@@ -241,6 +241,7 @@ button{
     max-width: 316px;    
     width: 100%;
     height: auto;  
+    padding-top: 10px;
     }
     .main_text {
         gap: 40px;
@@ -370,6 +371,12 @@ h3 {
     }
 }
 
+@media (max-width: 769px) {
+    .section_menu{
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 381px) {
     .section_menu{
         padding-top: 100px;
@@ -382,9 +389,18 @@ h3 {
         max-height: 580px;
         width: 100%;
         margin-bottom: 0;
+        margin-top: 0;
+        padding-bottom: 40px;
     }
     .go_ahead, .go_back {
         display: none;
+    }
+    .frappuccino {
+        height: 348px;
+        width: 100%;
+    }
+    .h3_margin{
+        margin-top: 20px;
     }
     .choose_coffee {
         display: flex;
@@ -454,7 +470,10 @@ h3 {
 }
 
 @media (min-width: 770px) {
-    .show_in_tablet,.show_in_mob {
+    .about_main .show_in_pk {
+        display: inline;
+    }
+    .about_main .show_in_tablet, .about_main .show_in_mob {
         display: none;
     }
 }
@@ -464,7 +483,7 @@ h3 {
         display: flex;
         flex-direction: column;
         gap: 40px;
-        padding: 100px 0;
+        padding: 0;
         margin: 0;
     }
     .h2_long {
@@ -480,10 +499,10 @@ h3 {
         height: auto;
         width: 100%;
     }
-    .show_in_tablet {
+    .about_main .show_in_tablet {
         display: inline;
     }
-    .img_short, .show_in_pk, .show_in_mob{
+    .img_short, .about_main .show_in_pk, .about_main .show_in_mob{
         display: none;
     }
 }
@@ -509,10 +528,10 @@ h3 {
         height: auto;
         width: 100%;
     }
-    .show_in_mob {
+    .about_main .show_in_mob {
         display: inline;
     }
-    .img_short, .show_in_pk, .show_in_tablet{
+    .img_short, .about_main .show_in_pk, .about_main .show_in_tablet{
         display: none;
     }
 }
@@ -580,7 +599,7 @@ h3 {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding: 0;
+        padding-top: 100px;
         margin: 0;
         gap: 100px;
         width: 100%;
