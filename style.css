@@ -238,19 +238,16 @@ button{
     font-size: 42px;      
     line-height: 1.15;    
     letter-spacing: normal;
-    max-width: 350px;    
+    max-width: 316px;    
     width: 100%;
     height: auto;  
     }
     .main_text {
-        /* position: absolute;
-        top: 0; */
-        /* left: 10px; */
         gap: 40px;
         padding-top: 60px;
         padding-left: 1px;
         padding-right: 15px;
-        /* width: 50%; */
+        padding-bottom: 0;
         height: auto;
         width: 100%;
         display: flex;
@@ -367,6 +364,41 @@ h3 {
     justify-content: center;
 } 
 
+@media (max-width: 769px) {
+
+}
+
+@media (max-width: 381px) {
+    .section_menu{
+        padding-top: 100px;
+    }
+    .section_menu h2 {
+        font-size: 32px;
+    }
+    .menu_block {
+        max-height: 580px;
+        width: 100%;
+    }
+    .go_ahead, .go_back {
+        display: none;
+    }
+    .choose_coffee {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .show_in_pk {
+        display: none;
+    }
+}
+
+@media (min-width: 770px) {
+
+}
+
+                /* start block with photo*/
+
 .perfect {
     color: #B0907A;
 }
@@ -418,6 +450,9 @@ h3 {
     height: 430px;           
 }
 
+
+                /* start app block */
+
 .app {
     display: flex;
     justify-content: space-between;
@@ -466,6 +501,9 @@ h3 {
     text-align: left;
     margin-bottom: 40px;
 }
+
+
+                /* start footer */
 
 .footer {
     display: flex;
