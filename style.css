@@ -8,6 +8,18 @@ a {
     letter-spacing: 0.7px;
 }
 
+:root {
+    --bg-page: #E1D4C9;      
+    --text-main: #403F3D;  
+    --text-light: #665F55; 
+}
+
+.dark-theme {
+    --bg-page: #211F1D;      
+    --text-main: #E1D4C9;   
+    --text-light: #C1B3A8;   
+}
+
 html{
     box-sizing: border-box;
     font-family: "Intel", sans-serif;
@@ -22,12 +34,22 @@ html{
 }
 
 .page {
-    background-color: #E1D4C9;
+    background-color: var(--bg-page);
+    color: var(--text-main);
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 40px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h2, h3, .h2_left {
+    color: var(--text-main);
+}
+
+.h4_dark {
+    color: var(--text-main);
 }
 
                 /* start header */
@@ -64,6 +86,8 @@ html{
     gap: 8px;
     padding: 4px;
     text-align: center;
+    cursor: pointer;
+    user-select: none;
 }
 
 .button_header {
@@ -138,6 +162,7 @@ html{
     padding-bottom: 100px;
     padding-top: 100px;
     padding-left: 100px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -183,25 +208,15 @@ button{
 }
 
 @media (max-width: 769px) {
-    /* .m_photo {
-        height: 644px;
-        width: 100%;
-    } */
     .main_text {
         height: 444px;
         width: 100%;
         padding-top: 20px;
     }
-    /* .main_photo {
-        padding-top: 20px;
-    } */
     .main_text h4 {
         max-width: 570px;
     }
     .main_text {
-        /* padding-top: 120px; */
-        /* padding-left: 50px; */
-        /* height: 100%; */
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
@@ -217,10 +232,6 @@ button{
 }
 
 @media (max-width: 381px) {
-    /* .m_photo {
-        height: 552px;
-        width: 100%;
-    } */
     h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;     
