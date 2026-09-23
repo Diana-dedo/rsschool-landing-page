@@ -39,7 +39,7 @@ html{
     box-sizing: border-box;
 }
 
-h1, h2, h3, .h2_left {
+h1, h2, h3, .h2_left, p {
     color: var(--text-main);
 }
 
