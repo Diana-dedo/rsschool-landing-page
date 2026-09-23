@@ -123,47 +123,33 @@ html{
                 /* start first block */
 
 .main_photo {
-    display: block; 
-    position: relative;
-    padding: 0;
-    width: 100%;
-    height: auto;
-}
-
-.main_text {
-position: absolute;
-top: 0;
-left: 20px;
-gap: 40px;
-padding-top: 100px;
-padding-left: 80px;
-width: 50%;
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: flex-start; 
-align-items: flex-start;
-box-sizing: border-box;
-}
-
-.m_photo {
+    display: flex;
+    background-image: url("./img/img-hero.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 40px;
-    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
     width: 100%;
-    max-width: 1360px;
-    height: 640px; 
-    object-fit: cover;
+    height: 100%;
+    padding-bottom: 100px;
+    padding-top: 100px;
+    padding-left: 100px;
 }
 
 h1 {
     font-family: "Inter", sans-serif;
-    font-size: 72px;
+    font-size: clamp(42px, 5vw, 72px);
     font-style: bold;
-    color: #E1D4C9;
+    color: #e1d4c9;
     line-height: 1.0;
     margin: 0;
     letter-spacing: 2px;
     margin-bottom: 10px;
+    max-width: 550px;
 }
 
 .enjoy {
@@ -178,7 +164,7 @@ h4 {
     color: #E1D4C9;
     margin: 0;
     line-height: 1.5;
-    width: 90%;
+    max-width: 550px;
 }
 
 button{
@@ -197,21 +183,25 @@ button{
 }
 
 @media (max-width: 769px) {
-    .m_photo {
+    /* .m_photo {
         height: 644px;
         width: 100%;
-    }
+    } */
     .main_text {
         height: 444px;
         width: 100%;
-    }
-    .main_photo {
         padding-top: 20px;
     }
+    /* .main_photo {
+        padding-top: 20px;
+    } */
+    .main_text h4 {
+        max-width: 570px;
+    }
     .main_text {
-        padding-top: 120px;
-        padding-left: 50px;
-        height: 100%;
+        /* padding-top: 120px; */
+        /* padding-left: 50px; */
+        /* height: 100%; */
         display: flex;
         flex-direction: column;
         justify-content: flex-start; 
@@ -227,10 +217,10 @@ button{
 }
 
 @media (max-width: 381px) {
-    .m_photo {
+    /* .m_photo {
         height: 552px;
         width: 100%;
-    }
+    } */
     h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;     
@@ -245,7 +235,7 @@ button{
     }
     .main_text {
         gap: 40px;
-        padding-top: 60px;
+        padding-top: 20px;
         padding-left: 1px;
         padding-right: 15px;
         padding-bottom: 0;
@@ -285,7 +275,7 @@ button{
     margin: 70px auto;
     position: relative;
     padding-bottom: 80px;
-    height: 590px;
+    height: auto;
 }
 
 h2 {
@@ -340,7 +330,9 @@ h3 {
     flex-direction: column;
     align-items: center;   
     text-align: center;
-    width: 520px;
+    /* width: 520px; */
+    width: 100%;
+    max-width: 520px;
     gap: 16px;
 }
 
@@ -351,7 +343,9 @@ h3 {
 }
 
 .frappuccino {
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
+    max-width: 450px;
     height: auto;
 }
 
@@ -462,11 +456,15 @@ h3 {
 }
 
 .img_tall {
-    height: 590px;        
+    /* height: 590px;         */
+    height: auto;
+    aspect-ratio: 1 / 1.25;
 }
 
 .img_short {
-    height: 430px;           
+    /* height: 430px;            */
+    height: auto;
+    aspect-ratio: 1 / 0.9;
 }
 
 @media (min-width: 770px) {
@@ -563,7 +561,8 @@ h3 {
 
 .h2_left {
     font-family: "Inter", sans-serif;
-    font-size: 60px;
+    /* font-size: 60px; */
+    font-size: clamp(36px, 4.5vw, 60px); 
     font-weight: bold;
     color: #403F3D;
     margin: 0;
@@ -572,14 +571,16 @@ h3 {
 
 .h2_light {
     font-family: "Inter", sans-serif;
-    font-size: 60px;
+    /* font-size: 60px; */
+    font-size: clamp(36px, 4.5vw, 60px); 
     font-weight: bold;
     color: #E1D4C9;
 }
 
 .h2_dark {
     font-family: "Inter", sans-serif;
-    font-size: 60px;
+    /* font-size: 60px; */
+    font-size: clamp(36px, 4.5vw, 60px); 
     font-weight: bold;
     color: #B0907A;
     font-style: italic;
@@ -656,9 +657,9 @@ h3 {
         margin-left: 0;
         width: 100%; 
     }
-    .download_app h2 {
+    /* .download_app h2 {
         font-size: 32px;
-    }
+    } */
     .download_app .show_in_mob {
         display: inline;
     }
@@ -680,11 +681,14 @@ h3 {
     border-radius: 40px;
     flex-direction: row;
     align-items: center;
-    height: 450px;
-    width: auto;
-    padding: 0 60px;
+    /* height: 450px; */
+    height: auto;
+    width: 100%;
+    /* padding: 0 60px; */
+    padding: 60px 60px; 
     margin-bottom: 40px;
     margin-top: 100px;
+    box-sizing: border-box;
 }
 
 .h3_light {
@@ -719,13 +723,13 @@ h3 {
     justify-content: flex-start;
     align-items: center;
     gap: 12px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     margin-bottom: 5px;
 }
 
 .h4_foot {
     width: auto;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .foot_right {
@@ -901,7 +905,8 @@ h3 {
     padding: 0 0 20px 0;
     overflow: hidden;
     box-sizing: border-box;
-    height: 506px;
+    height: auto;
+    min-height: 506px;
     width: 100%;
 }
 
@@ -912,7 +917,9 @@ h3 {
     align-items: flex-start; 
     overflow: hidden;
     box-sizing: border-box;
-    height: 40%;
+    height: auto;
+    flex-grow: 1;
+    padding-bottom: 10px;
 }
 
 .coffee_img_wrap {
