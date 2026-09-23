@@ -39,7 +39,7 @@ html{
     box-sizing: border-box;
 }
 
-h2, h3, .h2_left {
+h1, h2, h3, .h2_left {
     color: var(--text-main);
 }
 
@@ -158,22 +158,6 @@ h2, h3, .h2_left {
 .dark-theme .moon-active { display: block; }
 .dark-theme .moon-inactive { display: none; }
 
-/* .button_menu:hover .logo-img_dark {
-    display: none;
-}
-.button_menu:hover .logo-img_light {
-    display: block;
-}
-
-.dark-theme .logo-img_dark-theme {
-    display: block;
-}
-.dark-theme .button_menu:hover .logo-img_dark-theme {
-    display: none;
-}
-.dark-theme .button_menu:hover .logo-img_light-theme {
-    display: block;
-} */
 
                 /* start first block */
 
@@ -342,6 +326,7 @@ h2 {
     color: #403F3D;
     margin: 0;
     text-align: center;
+    color: var(--text-main);
 }
 
 h3 {
@@ -353,11 +338,13 @@ h3 {
     text-align: center;
     gap: 16px;
     letter-spacing: 2px;
+    color: var(--text-main);
 }
 
 .h3_margin {
     margin-top: 40px;
     letter-spacing: 1px;
+    color: var(--text-main);
 }
 
 .favorite {
@@ -397,6 +384,7 @@ h3 {
     color: #403F3D;
     width: 100%;
     margin: 0;
+    color: var(--text-main);
 }
 
 .frappuccino {
@@ -452,6 +440,7 @@ h3 {
     }
     .h3_margin{
         margin-top: 20px;
+        color: var(--text-main);
     }
     .choose_coffee {
         display: flex;
@@ -485,7 +474,8 @@ h3 {
     letter-spacing: 1.4px;
     width: 100%;
     margin: 0;
-    text-align: justify; 
+    text-align: justify;
+    color: var(--text-main); 
 }
 
 .about {
@@ -545,6 +535,7 @@ h3 {
         font-size: 60px;
         letter-spacing: 0%;
         text-align: left;
+        color: var(--text-main);
     }
     .about {
         display: flex;
@@ -574,6 +565,7 @@ h3 {
         font-size: 32px;
         letter-spacing: 0%;
         text-align: left;
+        color: var(--text-main);
     }
     .about {
         display: flex;
@@ -624,6 +616,7 @@ h3 {
     color: #403F3D;
     margin: 0;
     text-align: left;
+    color: var(--text-main);
 }
 
 .h2_light {
@@ -632,6 +625,7 @@ h3 {
     font-size: clamp(36px, 4.5vw, 60px); 
     font-weight: bold;
     color: #E1D4C9;
+    color: var(--text-main);
 }
 
 .h2_dark {
@@ -643,6 +637,7 @@ h3 {
     font-style: italic;
     text-align: left;
     margin-bottom: 40px;
+    color: var(--text-main);
 }
 
 @media (min-width: 770px) {
@@ -758,6 +753,7 @@ h3 {
     gap: 16px;
     margin-bottom: 25px;
     letter-spacing: 0.8px;
+    color: var(--text-main);
 }
 
 .foot_left {
@@ -786,6 +782,7 @@ h3 {
 
 .h4_foot {
     width: auto;
+    color: var(--text-main);
     /* white-space: nowrap; */
 }
 
@@ -849,6 +846,7 @@ h3 {
     }
     .foot_left h2, .foot_left h2 {
         font-size: 32px;
+        color: var(--text-main);
     }
 }
 
@@ -933,6 +931,7 @@ h3 {
     }
     .title_catalog h2 {
         font-size: 32px;
+        color: var(--text-main);
     }
     .title_catalog .show_in_pk, .title_catalog .show_in_tablet {
         display: none;
@@ -997,6 +996,7 @@ h3 {
     margin-bottom: 0;
     margin-left: 20px;
     letter-spacing: 0.5px;
+    color: var(--text-main);
 }
 
 .catalog_coffee .h4_dark, .catalog_tea .h4_dark, .catalog_desserts .h4_dark {
@@ -1008,6 +1008,7 @@ h3 {
     margin-bottom: 0;
     font-weight: normal;
     margin-left: 20px;
+    color: var(--text-main);
 }
 
 .catalog_coffee .price, .catalog_tea .price, .catalog_desserts .price {
