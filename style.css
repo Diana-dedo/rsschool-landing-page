@@ -43,7 +43,7 @@ h1, h2, h3, .h2_left {
     color: var(--text-main);
 }
 
-.h4_dark {
+.p_dark {
     color: var(--text-main);
 }
 
@@ -208,11 +208,11 @@ h1, h2, h3, .h2_left {
     box-sizing: border-box;
 }
 
-.main_photo h4 {
+.main_photo p {
     color: #E1D4C9; 
 }
 
-h4 {
+p {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -221,7 +221,7 @@ h4 {
     max-width: 550px;
 }
 
-.h4_dark {
+.p_dark {
     width: 100%;
     margin: 0;
     color: var(--text-main); 
@@ -245,7 +245,7 @@ h1 {
     font-style: italic;
 }
 
-h4 {
+p {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -299,7 +299,7 @@ h4 {
         padding-left: 60px;
         gap: 40px;
     }
-    .main_photo h4 {
+    .main_photo p {
         max-width: 570px;
     }
     .main_photo h1 {
@@ -491,7 +491,7 @@ h3 {
     gap: 16px;
 }
 
-.h4_dark{
+.p_dark{
     color: #403F3D;
     width: 100%;
     margin: 0;
@@ -919,7 +919,7 @@ h3 {
     margin-bottom: 5px;
 }
 
-.h4_foot {
+.p_foot {
     width: auto;
     /* white-space: nowrap; */
 }
@@ -992,6 +992,15 @@ h3 {
 }
 
 /* start catalog here */
+
+.catalog-title {
+    font-family: "Inter", sans-serif;
+    font-size: 60px; 
+    font-weight: bold;
+    color: var(--text-main);
+    text-align: center;
+    margin: 0;
+}
 
 .title_catalog {
     display: flex;
@@ -1140,7 +1149,7 @@ h3 {
     color: var(--text-main);
 }
 
-.catalog_coffee .h4_dark, .catalog_tea .h4_dark, .catalog_desserts .h4_dark {
+.catalog_coffee .p_dark, .catalog_tea .p_dark, .catalog_desserts .p_dark {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     letter-spacing: 0.1px;
@@ -1210,7 +1219,7 @@ h3 {
         gap: 12px;
         padding: 20px;
     }
-    .coffee_text_block h3, .coffee_text_block .h4_dark, .coffee_text_block .price {
+    .coffee_text_block h3, .coffee_text_block .p_dark, .coffee_text_block .price {
         margin: 0;
     }
 }
