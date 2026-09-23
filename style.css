@@ -29,10 +29,6 @@ html{
     scroll-behavior: smooth;
 }
 
-.button {
-    cursor: pointer;
-}
-
 .page {
     background-color: var(--bg-page);
     color: var(--text-main);
@@ -41,7 +37,6 @@ html{
     margin: 0 auto;
     padding: 0 40px;
     box-sizing: border-box;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h2, h3, .h2_left {
@@ -143,6 +138,42 @@ h2, h3, .h2_left {
     }
 }
 
+.logo-img_dark {
+    display: none;
+}
+.dark-theme .logo-img_light {
+    display: none;
+}
+.dark-theme .logo-img_dark {
+    display: block;
+}
+
+.sun-active { display: block; }
+.sun-inactive { display: none; }
+.moon-active { display: none; }
+.moon-inactive { display: block; }
+
+.dark-theme .sun-active { display: none; }
+.dark-theme .sun-inactive { display: block; }
+.dark-theme .moon-active { display: block; }
+.dark-theme .moon-inactive { display: none; }
+
+/* .button_menu:hover .logo-img_dark {
+    display: none;
+}
+.button_menu:hover .logo-img_light {
+    display: block;
+}
+
+.dark-theme .logo-img_dark-theme {
+    display: block;
+}
+.dark-theme .button_menu:hover .logo-img_dark-theme {
+    display: none;
+}
+.dark-theme .button_menu:hover .logo-img_light-theme {
+    display: block;
+} */
 
                 /* start first block */
 
@@ -192,19 +223,37 @@ h4 {
     max-width: 550px;
 }
 
-button{
-    height: 64px;
+.button_menu img {
+    display: none;
     width: 200px;
-    background-color: #E1D4C9;
-    color: #403F3D;        
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    border: none;
-    font-family: "Inter", sans-serif; 
-    font-size: 16px;                 
-    font-weight: 600;
+    height: 64px;
+}
+
+.button_menu .logo-img_dark {
+    display: block;
+}
+
+.button_menu:hover .logo-img_dark {
+    display: none;
+}
+.button_menu:hover .logo-img_light {
+    display: block;
+}
+
+.dark-theme .button_menu .logo-img_dark,
+.dark-theme .button_menu .logo-img_light {
+    display: none !important;
+}
+
+.dark-theme .button_menu .logo-img_dark-theme {
+    display: block;
+}
+
+.dark-theme .button_menu:hover .logo-img_dark-theme {
+    display: none;
+}
+.dark-theme .button_menu:hover .logo-img_light-theme {
+    display: block;
 }
 
 @media (max-width: 769px) {
@@ -225,9 +274,6 @@ button{
     }
     .menu_hover {
         display: inline-block;
-    }
-    .button {
-        display: none;
     }
 }
 

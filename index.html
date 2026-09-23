@@ -17,7 +17,8 @@
     <header>
         <div class="wrapper header">
         <a href="./index.html">
-            <img src="./img/logo-light.png" alt="resource coffee house">
+            <img src="./img/logo-light.png" alt="resource coffee house" class="logo-img_light">
+            <img src="./img/logo-dark.png" alt="resource coffee house" class="logo-img_dark">
         </a>
         <nav class="header_nav">
             <ul class="header_list">
@@ -37,11 +38,18 @@
         </nav>
             <div class="button_header">
                 <div class="change_dark">
-                    <img src="./img/Light.png" alt="light site" class="theme-toggle-light">
-                    <img src="./img/Dark (1).png" alt="dark site" class="theme-toggle-dark">
+                    <div class="theme-icon-container">
+                        <img src="./img/Light.png" alt="active sun" class="sun-active">
+                        <img src="./img/Light-sun.png" alt="inactive sun" class="sun-inactive">
+                    </div>
+                    <div class="theme-icon-container">
+                        <img src="./img/Dark (1).png" alt="inactive moon" class="moon-inactive">
+                        <img src="./img/Dark.png" alt="active moon" class="moon-active">
+                    </div>
                 </div>
                 <a href="./catalog.html" class="menu_button">
-                    <img src="./img/coffee-menu.png" class="but_menu" alt="menu">
+                    <img src="./img/coffee-menu.png" class="dark-theme logo-img_light" alt="menu">
+                    <img src="./img/coffee-menu (1).png" class="dark-theme logo-img_dark" alt="menu">
                     <img src="./img/button-icon-burger.png" class="burger" alt="menu">
                 </a>
             </div>
@@ -52,9 +60,11 @@
         <div class="main_photo">
             <h1><span class="enjoy">Enjoy</span> premium coffee at our charming cafe</h1>
             <h4>With its inviting atmosphere and delicious coffee options, the Coffee <br class="show_in_tablet">House Resource is a popular destination for coffee lovers and those <br class="show_in_tablet">seeking a warm and inviting space to enjoy their favorite beverage.</h4>
-            <a href="catalog.html">
-                <button class="button">Menu</button>
-                <img src="./img/State=hover.png" alt="menu" class="menu_hover">
+            <a href="catalog.html" class="button_menu">
+                <img src="./img/State=default (1).png" alt="menu" class="logo-img_dark">
+                <img src="./img/State=hover (1).png" alt="menu" class="logo-img_light">
+                <img src="./img/State=default.png" alt="menu" class="logo-img_dark-theme">
+                <img src="./img/State=hover.png" alt="menu" class="logo-img_light-theme">
             </a>
         </div>
 
