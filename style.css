@@ -22,7 +22,7 @@ a {
 
 html{
     box-sizing: border-box;
-    font-family: "Intel", sans-serif;
+    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -47,9 +47,6 @@ h1, h2, h3, .h2_left {
     color: var(--text-main);
 }
 
-.slider_catalog .h4_dark {
-    color: var(--bg-page);
-}
 
                 /* start header */
 
@@ -64,15 +61,14 @@ h1, h2, h3, .h2_left {
 }
 
 .header_nav {
-    margin-left: -50px; 
-    margin-right: 0;
+    margin-right: 0 auto;
 }
 
 .header_list {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 45px;
+    gap: clamp(16px, 3.2vw, 45px); 
     margin: 0;
     padding: 0;
 }
@@ -119,7 +115,8 @@ h1, h2, h3, .h2_left {
         align-items: center;
     }
 
-    .header_nav {
+    
+    .header_nav,.menu_button .logo-img_light ,.menu_button .logo-img_dark {
         display: none;
     }
 
@@ -129,6 +126,8 @@ h1, h2, h3, .h2_left {
 
     .burger {
         display: inline-block;
+        height: 44px;
+        width: 44px;
     }
 }
 
@@ -207,6 +206,25 @@ h1, h2, h3, .h2_left {
     padding-top: 100px;
     padding-left: 100px;
     box-sizing: border-box;
+}
+
+.main_photo h4 {
+    color: #E1D4C9; 
+}
+
+h4 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--text-main);
+    line-height: 1.5;
+    max-width: 550px;
+}
+
+.h4_dark {
+    width: 100%;
+    margin: 0;
+    color: var(--text-main); 
 }
 
 h1 {
@@ -288,6 +306,38 @@ h4 {
     .menu_hover {
         display: inline-block;
     }
+    .menu_button img:not(.burger) {
+        position: absolute !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+    }
+    .menu_button .burger {
+        display: inline-block !important;
+        box-sizing: border-box !important;
+    }
+    .menu_button .burger.dark-arrow {
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+    }
+    .menu_button .burger.light-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+    }
+    .dark-theme .menu_button .burger.light-arrow {
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+    }
+    .dark-theme .menu_button .burger.dark-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+    }
 }
 
 @media (max-width: 381px) {
@@ -317,15 +367,43 @@ h4 {
         align-items: flex-start;
         box-sizing: border-box;
     }
+    .menu_button img:not(.burger) {
+        position: absolute !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+    }   
+    .menu_button .burger {
+        display: inline-block !important;
+    }
+    .menu_button .burger.dark-arrow {
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+    }
+    .menu_button .burger.light-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+    }
+    .dark-theme .menu_button .burger.light-arrow {
+        width: 0 !important;
+        height: 0 !important;
+        opacity: 0 !important;
+    }
+    .dark-theme .menu_button .burger.dark-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        opacity: 1 !important;
+    }
 }
 
 @media (min-width: 770px) {
-    .menu_hover {
-        display: none;
+    .menu_hover, .burger {
+        display: none !important;
     }
-    .menu_hover {
-        display: none;
-    }
+
 }
 
 
@@ -621,6 +699,7 @@ h3 {
     max-width: 1440px;
     align-items: center;
     margin: 100px 0;
+    width: 100%;
 }
 
 .download_app {
@@ -636,6 +715,15 @@ h3 {
     gap: 20px;
     justify-content: flex-start;
 }
+
+.mobile_looks {
+    display: block;
+    width: 100%;
+    max-width: clamp(300px, 45vw, 630px); 
+    height: auto;
+    object-fit: contain;
+}
+
 
 .h2_left {
     font-family: "Inter", sans-serif;
@@ -695,8 +783,9 @@ h3 {
         width: 100%; 
     }
     .mobile_looks {
-        width: 100%;
+        max-width: 100%;
         height: auto;
+        display: block;
     }
     .download_app .show_in_tablet {
         display: inline;
@@ -901,7 +990,7 @@ h3 {
     border-radius: 30px;
     border: 1px solid #665F55;
     gap: 12px;
-    background-color: #E1D4C9;
+    color: var(--bg-page);
     padding: 8px 10px; 
     height: 46px;
     box-sizing: border-box;
