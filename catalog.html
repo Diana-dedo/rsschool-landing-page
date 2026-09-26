@@ -35,6 +35,10 @@
                     <a href="#contact" class="link">Contact us</a>
                 </li>
             </ul>
+            <div class="menu_nav_cup">
+                <img src="./img/coffee-menu.png" class="nav-cup-light" alt="coffee cup decor">
+                <img src="./img/coffee-menu-1.png" class="nav-cup-dark" alt="coffee cup decor">
+            </div>
         </nav>
             <div class="button_header">
                 <div class="change_dark">
@@ -47,11 +51,16 @@
                         <img src="./img/Dark.png" alt="active moon" class="moon-active">
                     </div>
                 </div>
-                <a href="./catalog.html" class="menu_button">
-                    <img src="./img/coffee-menu.png" class="dark-theme logo-img_light" alt="menu">
-                    <img src="./img/coffee-menu-1.png" class="dark-theme logo-img_dark" alt="menu">
-                    <img src="./img/button-icon-burger.png" class="burger" alt="menu">
-                </a>
+                <button class="menu_button">
+                    <img src="./img/coffee-menu.png" class="light-arrow cup-light" alt="menu">
+                    <img src="./img/coffee-menu-1.png" class="dark-arrow cup-dark" alt="menu">
+                    
+                    <img src="./img/button-icon-burger.png" class="burger icon-burger burger-light" alt="menu">
+                    <img src="./img/State=default2.png" class="burger icon-burger burger-dark" alt="menu">
+                    
+                    <img src="./img/close_burger_lihgt.png" class="burger close-light" alt="close menu">
+                    <img src="./img/close_burger_dark.png" class="burger close-dark" alt="close menu">
+                </button>
             </div>
         </div>
     </header>
@@ -60,252 +69,30 @@
         <section class="title_catalog">
             <h1 class="catalog-title">Behind each of our <br class="show_in_tablet">cups <br class="show_in_pk">hides an <span class="favorite">amazing surprise</span></h1>
             <div class="slider_catalog">
-                <div class="coffee_tea_dessert">
+                <button class="coffee_tea_dessert active" data-category="coffee">
                     <img src="./img/icon.png" alt="coffee">
                     <h2 class="p_h2_dark">Coffee</h2>
-                </div>
-                <div class="coffee_tea_dessert">
+                </button>
+
+                <button class="coffee_tea_dessert" data-category="tea">
                     <img src="./img/icon-1.png" alt="tea">
                     <p class="p_dark">Tea</p>
-                </div>
-                <div class="coffee_tea_dessert">
+                </button>
+    
+                <button class="coffee_tea_dessert" data-category="dessert">
                     <img src="./img/icon-3.png" alt="dessert">
                     <p class="p_dark">Dessert</p>
-                </div>
+                </button>
             </div>
         </section>
 
-        <section class="menu_coffee">
-            <!-- 1 -->
-            <div class="catalog_coffee"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-1.jpg" alt="irish coffee">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Irish coffee</h3>
-                    <p class="p_dark">Fragrant black coffee with <br>Jameson Irish whiskey and <br>whipped milk</p>
-                    <h3 class="price">$7.00</h3>
-                </div>
-            </div>
-            <!-- 2 -->
-            <div class="catalog_coffee">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-2.jpg" alt="Kahlua coffee">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Kahlua coffee</h3>
-                    <p class="p_dark">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</p>
-                    <h3 class="price">$7.00</h3>
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="catalog_coffee">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-3.jpg" alt="Honey raf">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Honey raf</h3>
-                    <p class="p_dark">Espresso with frothed milk, cream <br>and aromatic honey</p>
-                    <h3 class="price">$5.50</h3>
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="catalog_coffee">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-4.jpg" alt="Ice cappuccino">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Ice cappuccino</h3>
-                    <p class="p_dark">Cappuccino with soft thick foam in summer version with ice</p>
-                    <h3 class="price">$5.00</h3>
-                </div>
-            </div>
-            <!-- 5 -->
-            <div class="catalog_coffee hidden-card">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-5.jpg" alt="Espresso">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Espresso</h3>
-                    <p class="p_dark">Classic black coffee</p>
-                    <h3 class="price">$4.50</h3>
-                </div>
-            </div>
-            <!-- 6 -->
-            <div class="catalog_coffee hidden-card">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-6.jpg" alt="Latte">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Latte</h3>
-                    <p class="p_dark">Espresso coffee with the addition of<br>steamed milk and dense milk <br>foam</p>
-                    <h3 class="price">$5.50</h3>
-                </div>
-            </div>
-            <!-- 7 -->
-            <div class="catalog_coffee hidden-card">
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-7.jpg" alt="Latte macchiato">
-                </div>
-                <div class="coffee_text_block hidden-card">
-                    <h3>Latte macchiato</h3>
-                    <p class="p_dark">Espresso with frothed milk and chocolate</p>
-                    <h3 class="price">$5.50</h3>
-                </div>
-            </div>
-            <!-- 8 -->
-            <div class="catalog_coffee hidden-card"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/coffee-8.jpg" alt="Coffee with cognac">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Coffee with cognac</h3>
-                    <p class="p_dark">Fragrant black coffee with cognac <br>and whipped cream</p>
-                    <h3 class="price">$6.50</h3>
-                </div>
-            </div>
-            <img src="./img/show_more.png" alt="show more" class="show_more">
+        <section class="menu_products_grid" id="products-container">
+            
         </section> 
-        
 
-        <section class="menu_tea">
-            <!-- 1 -->
-            <div class="catalog_tea"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/tea-1.png" alt="Moroccan">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Moroccan</h3>
-                    <p class="p_dark">Fragrant black tea with the addition <br>of tangerine, cinnamon, honey, <br>lemon and mint</p>
-                    <h3 class="price">$4.50</h3>
-                </div>
-            </div>
-            <!-- 2 -->
-            <div class="catalog_tea"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/tea-2.png" alt="Ginger">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Ginger</h3>
-                    <p class="p_dark">Original black tea with fresh ginger, <br>lemon and honey</p>
-                    <h3 class="price">$5.00</h3>
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="catalog_tea"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/tea-3.png" alt="Cranberry">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Cranberry</h3>
-                    <p class="p_dark">Invigorating black tea with <br>cranberry and honey</p>
-                    <h3 class="price">$5.00</h3>
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="catalog_tea"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/tea-4.png" alt="Sea buckthorn">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Sea buckthorn</h3>
-                    <p class="p_dark">Toning sweet black tea with sea <br>buckthorn, fresh thyme and <br>cinnamon</p>
-                    <h3 class="price">$5.50</h3>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="menu_desserts">
-            <!-- 1 -->
-            <div class="catalog_desserts"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-1.png" alt="Marble cheesecake">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Marble cheesecake</h3>
-                    <p class="p_dark">Philadelphia cheese with lemon <br>zest on a light sponge cake and red <br>currant jamk</p>
-                    <h3 class="price">$3.50</h3>
-                </div>
-            </div>
-            <!-- 2 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-2.png" alt="Red velvet">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Red velvet</h3>
-                    <p class="p_dark">Layer cake with cream cheese <br>frosting</p>
-                    <h3 class="price">$4.00</h3>
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-3.png" alt="Cheesecakes">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Cheesecakes</h3>
-                    <p class="p_dark">Soft cottage cheese pancakes with <br>sour cream and fresh berries and <br>sprinkled with powdered sugar</p>
-                    <h3 class="price">$4.50</h3>
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-4.png" alt="Creme brulee">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Creme brulee</h3>
-                    <p class="p_dark">Delicate creamy dessert in a <br>caramel basket with wild berries</p>
-                    <h3 class="price">$4.00</h3>
-                </div>
-            </div>
-            <!-- 5 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-5.png" alt="Pancakes">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Pancakes</h3>
-                    <p class="p_dark">Tender pancakes with strawberry <br>jam and fresh strawberries</p>
-                    <h3 class="price">$4.50</h3>
-                </div>
-            </div>
-            <!-- 6 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-6.png" alt="Honey cake">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Honey cake</h3>
-                    <p class="p_dark">Classic honey cake with delicate <br>custard</p>
-                    <h3 class="price">$4.50</h3>
-                </div>
-            </div>
-            <!-- 7 -->
-            <div class="catalog_desserts">
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-7.png" alt="Chocolate cake">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Chocolate cake</h3>
-                    <p class="p_dark">Cake with hot chocolate filling and <br>nuts with dried apricots</p>
-                    <h3 class="price">$5.50</h3>
-                </div>
-            </div>
-            <!-- 8 -->
-            <div class="catalog_desserts"> 
-                <div class="coffee_img_wrap">
-                    <img src="./img/dessert-8.png" alt="Black forest">
-                </div>
-                <div class="coffee_text_block">
-                    <h3>Black forest</h3>
-                    <p class="p_dark">A combination of thin sponge cake <br>with cherry jam and light chocolate <br>mousse</p>
-                    <h3 class="price">$6.50</h3>
-                </div>
-            </div>
-        </section> 
+        <button class="show_more_btn" id="load-more-btn" style="display: none;">
+            <img src="./img/show_more.png" alt="show more">
+        </button>
     </main>
 
         <footer class="wrapper footer" id="contact">
