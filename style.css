@@ -625,7 +625,6 @@ h3 {
     left: 50%;
     transform: translateX(-50%); 
     opacity: 1;
-    color: #B0907A;
 }
 
 .slider-dot {
@@ -1176,10 +1175,17 @@ h3 {
     border-radius: 30px;
     border: 1px solid #665F55;
     gap: 12px;
-    color: var(--text-main);
+    background-color: transparent;
     padding: 8px 10px; 
     height: 46px;
     box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.coffee_tea_dessert.active {
+    background-color: var(--text-light); /* Плашка заливается коричневым/серым цветом */
+    border-color: var(--text-light);
 }
 
 .p_h2_dark, 
@@ -1189,6 +1195,26 @@ h2.p_h2_dark {
     margin: 0;
     font-weight: normal;
     color: var(--text-main);
+}
+
+.coffee_tea_dessert.active .p_h2_dark {
+    color: var(--bg-page); 
+}
+
+.catalog_coffee .p_dark, 
+.catalog_tea .p_dark, 
+.catalog_desserts .p_dark {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-weight: normal;
+    margin-left: 20px;
+    color: var(--text-main);
+    white-space: normal;       
+    word-break: break-word; 
+    max-width: calc(100% - 40px);  
 }
 
 @media (min-width: 770px) {
@@ -1252,7 +1278,7 @@ h2.p_h2_dark {
 
                 /* start pic of menu */
 
-.menu_coffee, .menu_tea, .menu_desserts {
+.menu_coffee, .menu_tea, .menu_desserts, .menu_products_grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
@@ -1273,7 +1299,6 @@ h2.p_h2_dark {
     overflow: hidden;
     box-sizing: border-box;
     height: auto;
-    min-height: 506px;
     width: 100%;
 }
 

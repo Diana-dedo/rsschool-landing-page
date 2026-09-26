@@ -57,30 +57,87 @@ const btnNext = document.querySelector('.go_ahead_btn');
 
 let currentSlideIndex = 0;
 function moveSlider() {
-    sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-    sliderDots.forEach((dot, index) => {
-        if (index === currentSlideIndex) {
-            dot.classList.add('active');
+    if (sliderTrack) {
+        sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    }
+    if (sliderDots.length > 0) {
+        sliderDots.forEach((dot, index) => {
+            if (index === currentSlideIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+}
+    if (btnNext) {
+    btnNext.addEventListener('click', () => {
+        if (currentSlideIndex < sliderSlides.length - 1) {
+            currentSlideIndex++;
         } else {
-            dot.classList.remove('active');
+            currentSlideIndex = 0;
         }
+        moveSlider();
+    });
+}
+    if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+        } else {
+            currentSlideIndex = sliderSlides.length - 1;
+        }
+        moveSlider();
     });
 }
 
-btnNext.addEventListener('click', () => {
-    if (currentSlideIndex <  sliderSlides.length -1) {
-        currentSlideIndex++;
-    } else {
-        currentSlideIndex = 0
-    }
-    moveSlider();
-});
+            // catalog coffee/tea/desserts
 
-btnPrev.addEventListener('click', () => {
-    if (currentSlideIndex > 0) {
-        currentSlideIndex--;
-    } else {
-        currentSlideIndex = sliderSlides.length -1;
-    }
-    moveSlider();
-});
+const productsContainer = document.getElementById('products-container'); 
+const categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
+let allProducts = []; 
+
+function createCardHTML(product) {
+    return `
+        <div class="catalog_coffee" data-id="${product.name}"> 
+            <div class="coffee_img_wrap">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="coffee_text_block">
+                <h3>${product.name}</h3>
+                <p class="p_dark">${product.description}</p>
+                <h3 class="price">$${product.price}</h3>
+            </div>
+        </div>
+    `;
+}
+
+function displayProducts(categoryName) {
+    productsContainer.innerHTML = '';
+    
+    const filtered = allProducts.filter(item => item.category === categoryName);
+    
+    filtered.forEach(product => {
+        productsContainer.innerHTML += createCardHTML(product);
+    });
+}
+
+if (productsContainer) { 
+    fetch('./products.json')
+        .then(response => response.json())
+        .then(data => {
+            allProducts = data; 
+            displayProducts('coffee'); 
+        })
+        .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const selectedCategory = button.dataset.category;
+            displayProducts(selectedCategory);
+        });
+    });
+}
