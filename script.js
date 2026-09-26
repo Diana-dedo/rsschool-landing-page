@@ -1,3 +1,5 @@
+            // work with dark/light theme 
+
 const themeToggle = document.querySelector('.change_dark');
 
 themeToggle.addEventListener('click', () => {
@@ -14,6 +16,8 @@ const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
 }
+
+            // work with burger
 
 const burgerButton = document.querySelector('.menu_button');
 const headerNavigation = document.querySelector('.header_nav');
@@ -41,3 +45,42 @@ window.addEventListener('resize', () => {
         closeMobileMenu();
     }
 }); 
+
+
+            // work with slider
+
+const sliderTrack = document.querySelector('.slider-track');
+const sliderSlides = document.querySelectorAll('.choose_coffee');
+const sliderDots = document.querySelectorAll('.slider-dot');
+const btnPrev = document.querySelector('.go_back_btn');
+const btnNext = document.querySelector('.go_ahead_btn');
+
+let currentSlideIndex = 0;
+function moveSlider() {
+    sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    sliderDots.forEach((dot, index) => {
+        if (index === currentSlideIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+btnNext.addEventListener('click', () => {
+    if (currentSlideIndex <  sliderSlides.length -1) {
+        currentSlideIndex++;
+    } else {
+        currentSlideIndex = 0
+    }
+    moveSlider();
+});
+
+btnPrev.addEventListener('click', () => {
+    if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+    } else {
+        currentSlideIndex = sliderSlides.length -1;
+    }
+    moveSlider();
+});
