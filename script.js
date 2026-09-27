@@ -93,9 +93,13 @@ function moveSlider() {
 
             // catalog coffee/tea/desserts
 
+
 const productsContainer = document.getElementById('products-container'); 
 const categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
+const loadMoreBtn = document.getElementById('load-more-btn');
+
 let allProducts = []; 
+let currentCategory = 'coffee';
 
 function createCardHTML(product) {
     return `
@@ -112,17 +116,31 @@ function createCardHTML(product) {
     `;
 }
 
-function displayProducts(categoryName) {
+function displayProducts(categoryName, showAll = false) {
+    currentCategory = categoryName;
     productsContainer.innerHTML = '';
     
     const filtered = allProducts.filter(item => item.category === categoryName);
     
-    filtered.forEach(product => {
+    const isMobile = window.innerWidth <= 768;
+    
+    let productsToRender = filtered;
+    
+    if (isMobile && filtered.length > 4 && !showAll) {
+        productsToRender = filtered.slice(0, 4); 
+        if (loadMoreBtn) loadMoreBtn.style.display = 'block'; 
+    } else {
+        if (loadMoreBtn) loadMoreBtn.style.display = 'none'; 
+    }
+
+    productsToRender.forEach(product => {
         productsContainer.innerHTML += createCardHTML(product);
     });
 }
 
+
 if (productsContainer) { 
+
     fetch('./products.json')
         .then(response => response.json())
         .then(data => {
@@ -131,13 +149,24 @@ if (productsContainer) {
         })
         .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
 
+
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
             const selectedCategory = button.dataset.category;
-            displayProducts(selectedCategory);
+            displayProducts(selectedCategory); 
         });
+    });
+
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            displayProducts(currentCategory, true); 
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        displayProducts(currentCategory);
     });
 }
