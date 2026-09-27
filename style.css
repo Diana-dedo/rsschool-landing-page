@@ -1174,27 +1174,28 @@ h3 {
     align-items: center;
     border-radius: 30px;
     border: 1px solid #665F55;
-    gap: 12px;
+    gap: 10px;
     background-color: transparent;
     padding: 8px 10px; 
     height: 46px;
     box-sizing: border-box;
     cursor: pointer;
+    width: 115px;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.coffee_tea_dessert .p_h2_dark {
+    font-family: "Inter", sans-serif;
+    font-size: 16px; 
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-main); 
+    transition: color 0.3s ease;
 }
 
 .coffee_tea_dessert.active {
     background-color: var(--text-light); 
     border-color: var(--text-light);
-}
-
-.p_h2_dark, 
-h2.p_h2_dark {
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    margin: 0;
-    font-weight: normal;
-    color: var(--text-main);
 }
 
 .coffee_tea_dessert.active .p_h2_dark {
@@ -1291,7 +1292,7 @@ h2.p_h2_dark {
 .catalog_coffee, .catalog_tea, .catalog_desserts {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     border: 1px solid #C1B3A8;
     border-radius: 40px; 
@@ -1305,22 +1306,30 @@ h2.p_h2_dark {
 .coffee_text_block{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start; 
-    overflow: hidden;
+    text-align: left;
+    width: 100%;
     box-sizing: border-box;
     height: auto;
-    flex-grow: 1;
     padding-bottom: 10px;
 }
 
 .coffee_img_wrap {
     width: 100%;
-    height: 60%;
+    height: 310px;
     overflow: hidden;
     object-fit: cover;
-    border-radius: 40px;
+    border-radius: 40px; 
+    align-items: center;
     transform: scale(1.00); 
+}
+
+.coffee_img_wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .catalog_coffee h3, .catalog_tea h3, .catalog_desserts h3 {
@@ -1338,23 +1347,23 @@ h2.p_h2_dark {
     font-family: "Inter", sans-serif;
     font-size: 16px;
     letter-spacing: 0.1px;
-    margin-top: 12px;
-    margin-bottom: 0;
+    margin: 12px 0 0 0;
     font-weight: normal;
-    margin-left: 20px;
     color: var(--text-main);
+    white-space: normal;
+    word-break: break-word; 
+    width: 100%;
+    padding: 0 0 0 20px;
 }
 
 .catalog_coffee .price, .catalog_tea .price, .catalog_desserts .price {
     font-family: "Inter", sans-serif;
     font-size: 24px;
     font-weight: bold;
-    color: #403F3D;
-    margin-top: auto; 
-    margin-bottom: 0;
-    margin-left: 20px;
+    margin: auto 0 0 0; 
     letter-spacing: 1px;
     color: var(--text-main);
+    padding: 15px 0 0 20px;
 }
 
 #load-more-btn {
@@ -1367,7 +1376,7 @@ h2.p_h2_dark {
 }
 
 @media (max-width: 769px) {
-    .menu_coffee, .menu_tea, .menu_desserts {
+    .menu_products_grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
@@ -1392,7 +1401,7 @@ h2.p_h2_dark {
 }
 
 @media (max-width: 381px) {
-    .menu_coffee, .menu_tea, .menu_desserts {
+    .menu_products_grid {
         display: flex;
         flex-direction: column;
         justify-content: center;
