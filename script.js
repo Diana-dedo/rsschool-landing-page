@@ -151,8 +151,10 @@ if (productsContainer) {
 
 
     categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.addEventListener('click', (e) => {
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
             button.classList.add('active');
 
             const selectedCategory = button.dataset.category;
