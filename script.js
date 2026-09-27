@@ -171,4 +171,147 @@ if (productsContainer) {
     window.addEventListener('resize', () => {
         displayProducts(currentCategory);
     });
+
+    // pop-up
+
+const modal = document.getElementById('product-modal');
+const modalBody = document.getElementById('modal-body-content');
+const modalCloseBtn = document.getElementById('modal-close');
+
+let currentProduct = null; 
+let selectedSizeAddPrice = 0.00; 
+let selectedAdditivesPrice = 0.00; 
+
+function renderModalContent(product) {
+    currentProduct = product;
+    
+    selectedSizeAddPrice = 0.00;
+    selectedAdditivesPrice = 0.00;
+
+    let sizesHTML = '';
+    Object.keys(product.sizes).forEach((key, index) => {
+        const sizeInfo = product.sizes[key];
+        const isActive = index === 0 ? 'active' : ''; 
+        sizesHTML += `
+            <button class="modal-tab-btn size-btn ${isActive}" data-size-price="${sizeInfo['add-price']}">
+                <span class="btn-icon">${key.toUpperCase()}</span> ${sizeInfo.size}
+            </button>
+        `;
+    });
+
+    let additivesHTML = '';
+    product.additives.forEach((additive, index) => {
+        additivesHTML += `
+            <button class="modal-tab-btn additive-btn" data-additive-price="${additive['add-price']}">
+                <span class="btn-icon">${index + 1}</span> ${additive.name}
+            </button>
+        `;
+    });
+
+    modalBody.innerHTML = `
+        <div class="modal-grid">
+            <div class="modal-img-wrap">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            
+            <div class="modal-info-block">
+                <h2>${product.name}</h2>
+                <p class="modal-desc">${product.description}</p>
+                
+                <div class="modal-section">
+                    <span class="section-title">Size</span>
+                    <div class="modal-tabs-row">${sizesHTML}</div>
+                </div>
+
+                <div class="modal-section">
+                    <span class="section-title">Additives</span>
+                    <div class="modal-tabs-row">${additivesHTML}</div>
+                </div>
+
+                <div class="modal-total-row">
+                    <span class="total-title">Total:</span>
+                    <span class="total-price" id="modal-total-price">$${Number(product.price).toFixed(2)}</span>
+                </div>
+                
+                <div class="modal-warning">
+                    <img src="./img/info-icon-dark.png" alt="info" class="info-icon info-icon-dark">
+                    <img src="./img/info-icon-light.png" alt="info" class="info-icon info-icon-light">
+                    <span>The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
+                </div>
+
+                <button class="modal-action-close-btn" id="modal-btn-close-click">Close</button>
+            </div>
+        </div>
+    `;
+
+    initModalInteractivity();
+    const closeBtnClick = modalBody.querySelector('#modal-btn-close-click');
+    if (closeBtnClick) {
+        closeBtnClick.addEventListener('click', () => {
+            modal.classList.remove('is-active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+}
+
+function updateTotalPrice() {
+    const basePrice = Number(currentProduct.price);
+    const totalPrice = basePrice + selectedSizeAddPrice + selectedAdditivesPrice;
+    
+    const totalPriceElement = document.getElementById('modal-total-price');
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+}
+
+function initModalInteractivity() {
+    const sizeButtons = modalBody.querySelectorAll('.size-btn');
+    const additiveButtons = modalBody.querySelectorAll('.additive-btn');
+
+    sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            selectedSizeAddPrice = Number(btn.dataset.sizePrice);
+            updateTotalPrice();
+        });
+    });
+
+    additiveButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active'); 
+            
+            selectedAdditivesPrice = 0;
+            modalBody.querySelectorAll('.additive-btn.active').forEach(activeBtn => {
+                selectedAdditivesPrice += Number(activeBtn.dataset.additivePrice);
+            });
+            
+            updateTotalPrice();
+        });
+    });
+}
+
+if (productsContainer && modal) {
+    productsContainer.addEventListener('click', (e) => {
+        const card = e.target.closest('.catalog_coffee');
+        if (card) {
+            const productName = card.dataset.id;
+            const productData = allProducts.find(item => item.name === productName);
+            
+            if (productData) {
+                renderModalContent(productData);
+                modal.classList.add('is-active');
+                document.body.classList.add('no-scroll');
+            }
+        }
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('is-active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+}
 }
