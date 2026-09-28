@@ -51,6 +51,17 @@ if (allMenuLinks.length > 0) {
             const targetId = link.getAttribute('href');
             
             closeMobileMenu();
+
+            if (window.location.pathname.includes('catalog.html') && targetId && targetId.includes('index.html')) {
+                event.preventDefault(); 
+                
+                const hashIndex = targetId.indexOf('#');
+                const pureHash = hashIndex !== -1 ? targetId.substring(hashIndex) : '';
+                
+                window.location.href = './index.html' + pureHash;
+                return;
+            }
+
             if (targetId && targetId.startsWith('#')) {
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
