@@ -48,10 +48,15 @@ if (burgerButton) {
 if (allMenuLinks.length > 0) {
     allMenuLinks.forEach(link => {
         link.addEventListener('click', (event) => {
-            closeMobileMenu();
-
+            const isCatalogPage = window.location.pathname.includes('catalog.html');
             const targetId = link.getAttribute('href');
-            
+
+            if (isCatalogPage && targetId && targetId.includes('index.html#')) {
+                closeMobileMenu();
+                return; 
+            }
+
+            closeMobileMenu();
             if (targetId && targetId.includes('#')) {
                 const hashIndex = targetId.indexOf('#');
                 const pureHash = targetId.substring(hashIndex);
@@ -67,6 +72,7 @@ if (allMenuLinks.length > 0) {
         });
     });
 }
+
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 769) {
@@ -333,3 +339,56 @@ if (productsContainer) {
     }
 }
 }
+
+fetch('/rsschool-landing-page/products.json')
+        .then(response => response.json())
+        .then(data => {
+            allProducts = data; 
+            categoryButtons.forEach(btn => {
+                if (btn.dataset.category === 'coffee') btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            displayProducts('coffee'); 
+        })
+        .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            const selectedCategory = button.dataset.category;
+            displayProducts(selectedCategory); 
+        });
+    });
+
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            displayProducts(currentCategory, true); 
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        displayProducts(currentCategory);
+    });
+
+    productsContainer.addEventListener('click', (e) => {
+        const card = e.target.closest('.catalog_coffee');
+        if (card) {
+            const productName = card.dataset.id;
+            const productData = allProducts.find(item => item.name === productName);
+            if (productData && modal) {
+                renderModalContent(productData);
+                modal.classList.add('is-active');
+                document.body.classList.add('no-scroll');
+            }
+        }
+    });
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('is-active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    }
