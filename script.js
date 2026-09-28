@@ -48,20 +48,16 @@ if (burgerButton) {
 if (allMenuLinks.length > 0) {
     allMenuLinks.forEach(link => {
         link.addEventListener('click', (event) => {
-            const isCatalogPage = window.location.pathname.includes('catalog.html');
             const targetId = link.getAttribute('href');
-
-            if (isCatalogPage && targetId && targetId.includes('index.html#')) {
-                closeMobileMenu();
-                return; 
-            }
-
+            
             closeMobileMenu();
+
             if (targetId && targetId.includes('#')) {
                 const hashIndex = targetId.indexOf('#');
-                const pureHash = targetId.substring(hashIndex);
+                const pureHash = targetId.substring(hashIndex); 
                 
                 const targetSection = document.querySelector(pureHash);
+                
                 if (targetSection) {
                     event.preventDefault();
                     setTimeout(() => {
@@ -72,6 +68,7 @@ if (allMenuLinks.length > 0) {
         });
     });
 }
+
 
 
 window.addEventListener('resize', () => {
@@ -178,31 +175,12 @@ const productsContainer = document.getElementById('products-container');
 const categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
 const loadMoreBtn = document.getElementById('load-more-btn');
 
-if (document.getElementById('products-container') || window.location.pathname.includes('catalog.html')) {
+let allProducts = []; 
+let currentCategory = 'coffee'; 
+const modal = document.getElementById('product-modal');
+const modalBody = document.getElementById('modal-body-content');
 
-    fetch('/rsschool-landing-page/products.json')
-        .then(response => response.json())
-        .then(data => {
-            allProducts = data; 
-            
-            if (productsContainer) {
-                categoryButtons.forEach(btn => {
-                    if (btn.dataset.category === 'coffee') btn.classList.add('active');
-                    else btn.classList.remove('active');
-                });
-                displayProducts('coffee'); 
-            }
-        })
-        .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
-}
-
-if (productsContainer) { 
-    const modal = document.getElementById('product-modal');
-
-    const modalBody = document.getElementById('modal-body-content');
-
-    let allProducts = []; 
-    let currentCategory = 'coffee';
+if (productsContainer) {
     let currentProduct = null; 
     let selectedSizeAddPrice = 0.00; 
     let selectedAdditivesPrice = 0.00; 
@@ -292,74 +270,60 @@ if (productsContainer) {
         selectedAdditivesPrice = 0.00;
 
         let sizesHTML = '';
-
-    Object.keys(product.sizes).forEach((key, index) => {
-        const sizeInfo = product.sizes[key];
-        const isActive = index === 0 ? 'active' : ''; 
-        sizesHTML += `
-            <button class="modal-tab-btn size-btn ${isActive}" data-size-price="${sizeInfo['add-price']}">
-                <span class="btn-icon">${key.toUpperCase()}</span> ${sizeInfo.size}
-            </button>
-        `;
-    });
-
-    let additivesHTML = '';
-    product.additives.forEach((additive, index) => {
-        additivesHTML += `
-            <button class="modal-tab-btn additive-btn" data-additive-price="${additive['add-price']}">
-                <span class="btn-icon">${index + 1}</span> ${additive.name}
-            </button>
-        `;
-    });
-
-    modalBody.innerHTML = `
-        <div class="modal-grid">
-            <div class="modal-img-wrap">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            
-            <div class="modal-info-block">
-                <h2>${product.name}</h2>
-                <p class="modal-desc">${product.description}</p>
-                
-                <div class="modal-section">
-                    <span class="section-title">Size</span>
-                    <div class="modal-tabs-row">${sizesHTML}</div>
-                </div>
-
-                <div class="modal-section">
-                    <span class="section-title">Additives</span>
-                    <div class="modal-tabs-row">${additivesHTML}</div>
-                </div>
-
-                <div class="modal-total-row">
-                    <span class="total-title">Total:</span>
-                    <span class="total-price" id="modal-total-price">$${Number(product.price).toFixed(2)}</span>
-                </div>
-                
-                <div class="modal-warning">
-                    <img src="./img/info-icon-dark.png" alt="info" class="info-icon info-icon-dark">
-                    <img src="./img/info-icon-light.png" alt="info" class="info-icon info-icon-light">
-                    <span>The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
-                </div>
-
-                <button class="modal-action-close-btn" id="modal-btn-close-click">Close</button>
-            </div>
-        </div>
-    `;
-
-    initModalInteractivity();
-    const closeBtnClick = modalBody.querySelector('#modal-btn-close-click');
-    if (closeBtnClick) {
-        closeBtnClick.addEventListener('click', () => {
-            modal.classList.remove('is-active');
-            document.body.classList.remove('no-scroll');
+        Object.keys(product.sizes).forEach((key, index) => {
+            const sizeInfo = product.sizes[key];
+            const isActive = index === 0 ? 'active' : ''; 
+            sizesHTML += `
+                <button class="modal-tab-btn size-btn ${isActive}" data-size-price="${sizeInfo['add-price']}">
+                    <span class="btn-icon">${key.toUpperCase()}</span> ${sizeInfo.size}
+                </button>
+            `;
         });
-    }
-}
-}
 
-fetch('/rsschool-landing-page/products.json')
+        let additivesHTML = '';
+        product.additives.forEach((additive, index) => {
+            additivesHTML += `
+                <button class="modal-tab-btn additive-btn" data-additive-price="${additive['add-price']}">
+                    <span class="btn-icon">${index + 1}</span> ${additive.name}
+                </button>
+            `;
+        });
+
+        if (modalBody) {
+            modalBody.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-img-wrap">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="modal-info-block">
+                        <h2>${product.name}</h2>
+                        <p class="modal-desc">${product.description}</p>
+                        <div class="modal-section">
+                            <span class="section-title">Size</span>
+                            <div class="modal-tabs-row">${sizesHTML}</div>
+                        </div>
+                        <div class="modal-section">
+                            <span class="section-title">Additives</span>
+                            <div class="modal-tabs-row">${additivesHTML}</div>
+                        </div>
+                        <div class="modal-total-row">
+                            <span class="total-title">Total:</span>
+                            <span class="total-price" id="modal-total-price">$${Number(product.price).toFixed(2)}</span>
+                        </div>
+                        <div class="modal-warning">
+                            <img src="./img/info-icon-dark.png" alt="info" class="info-icon info-icon-dark">
+                            <img src="./img/info-icon-light.png" alt="info" class="info-icon info-icon-light">
+                            <span>The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
+                        </div>
+                        <button class="modal-action-close-btn" id="modal-btn-close-click">Close</button>
+                    </div>
+                </div>
+            `;
+        }
+        initModalInteractivity();
+    }
+
+    fetch('/rsschool-landing-page/products.json')
         .then(response => response.json())
         .then(data => {
             allProducts = data; 
@@ -381,7 +345,7 @@ fetch('/rsschool-landing-page/products.json')
     });
 
     if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', () => {
+        document.getElementById('load-more-btn').addEventListener('click', () => {
             displayProducts(currentCategory, true); 
         });
     }
@@ -402,12 +366,13 @@ fetch('/rsschool-landing-page/products.json')
             }
         }
     });
+}
 
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('is-active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    }
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('is-active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+}
