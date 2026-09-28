@@ -176,8 +176,8 @@ const categoryButtons = document.querySelectorAll('.coffee_tea_dessert');
 const loadMoreBtn = document.getElementById('load-more-btn');
 
 let allProducts = []; 
-let currentCategory = 'coffee'; 
-const modal = document.getElementById('product-modal');
+currentCategory = 'coffee'; 
+modal = document.getElementById('product-modal');
 const modalBody = document.getElementById('modal-body-content');
 
 if (productsContainer) {
@@ -208,16 +208,15 @@ if (productsContainer) {
         const isMobile = window.innerWidth <= 768;
         let productsToRender = filtered;
         
-        if (isMobile && filtered.length > 4 && !showAll) {
-            productsToRender = filtered.slice(0, 4); 
-            if (loadMoreBtn) loadMoreBtn.style.display = 'block'; 
-        } else {
-            if (loadMoreBtn) loadMoreBtn.style.display = 'none'; 
-        }
+productsContainer = document.getElementById('products-container'); 
+categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
+loadMoreBtn = document.getElementById('load-more-btn');
 
-        productsToRender.forEach(product => {
-            productsContainer.innerHTML += createCardHTML(product);
-        });
+if (productsContainer) {
+    allProducts = []; 
+    currentCategory = 'coffee';
+    modal = document.getElementById('product-modal'); 
+    modalBody = document.getElementById('modal-body-content');
     }
 
     function updateTotalPrice() {
