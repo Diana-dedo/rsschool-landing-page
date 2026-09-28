@@ -51,15 +51,10 @@ if (allMenuLinks.length > 0) {
             const targetId = link.getAttribute('href');
             
             closeMobileMenu();
-
-            if (targetId && targetId.includes('#')) {
-                const hashIndex = targetId.indexOf('#');
-                const pureHash = targetId.substring(hashIndex); 
-                
-                const targetSection = document.querySelector(pureHash);
-                
+            if (targetId && targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
                 if (targetSection) {
-                    event.preventDefault();
+                    event.preventDefault(); 
                     setTimeout(() => {
                         targetSection.scrollIntoView({ behavior: 'smooth' });
                     }, 50);
@@ -322,7 +317,7 @@ if (productsContainer) {
         initModalInteractivity();
     }
 
-    fetch('/rsschool-landing-page/products.json')
+    fetch('./products.json')
         .then(response => response.json())
         .then(data => {
             allProducts = data; 
