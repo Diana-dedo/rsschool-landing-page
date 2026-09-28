@@ -221,12 +221,7 @@ if (productsContainer) {
         const totalPriceElement = document.getElementById('modal-total-price');
         if (totalPriceElement) {
             totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
-        }
-    }
-
-    function initModalInteractivity() {
-        if (!modalBody) return;
-        const sizeButtons = modalBody.querySelectorAll('.size-btn');
+        }ttons = modalBody.querySelectorAll('.size-btn');
         const additiveButtons = modalBody.querySelectorAll('.additive-btn');
         const closeBtnClick = modalBody.querySelector('#modal-btn-close-click');
 
@@ -263,7 +258,7 @@ if (productsContainer) {
         selectedSizeAddPrice = 0.00;
         selectedAdditivesPrice = 0.00;
 
-        let sizesHTML = '';
+let sizesHTML = '';
         Object.keys(product.sizes).forEach((key, index) => {
             const sizeInfo = product.sizes[key];
             const isActive = index === 0 ? 'active' : ''; 
@@ -273,6 +268,56 @@ if (productsContainer) {
                 </button>
             `;
         });
+
+        let additivesHTML = '';
+        product.additives.forEach((additive, index) => {
+            additivesHTML += `
+                <button class="modal-tab-btn additive-btn" data-additive-price="${additive['add-price']}">
+                    <span class="btn-icon">${index + 1}</span> ${additive.name}
+                </button>
+            `;
+        });
+
+        if (modalBody) {
+            modalBody.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-img-wrap">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="modal-info-block">
+                        <h2>${product.name}</h2>
+                        <p class="modal-desc">${product.description}</p>
+                        <div class="modal-section">
+                            <span class="section-title">Size</span>
+                            <div class="modal-tabs-row">${sizesHTML}</div>
+                        </div>
+                        <div class="modal-section">
+                            <span class="section-title">Additives</span>
+                            <div class="modal-tabs-row">${additivesHTML}</div>
+                        </div>
+                        <div class="modal-total-row">
+                            <span class="total-title">Total:</span>
+                            <span class="total-price" id="modal-total-price">$${Number(product.price).toFixed(2)}</span>
+                        </div>
+                        <div class="modal-warning">
+                            <img src="./img/info-icon-dark.png" alt="info" class="info-icon info-icon-dark">
+                            <img src="./img/info-icon-light.png" alt="info" class="info-icon info-icon-light">
+                            <span>The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
+                        </div>
+                        <button class="modal-action-close-btn" id="modal-btn-close-click">Close</button>
+                    </div>
+                </div>
+            `;
+        }
+        initModalInteractivity();
+    }
+            const isActive = index === 0 ? 'active' : ''; 
+            sizesHTML += `
+                <button class="modal-tab-btn size-btn ${isActive}" data-size-price="${sizeInfo['add-price']}">
+                    <span class="btn-icon">${key.toUpperCase()}</span> ${sizeInfo.size}
+                </button>
+            `;
+        };
 
         let additivesHTML = '';
         product.additives.forEach((additive, index) => {
@@ -360,7 +405,7 @@ if (productsContainer) {
             }
         }
     });
-}
+
 
 if (modal) {
     modal.addEventListener('click', (e) => {
