@@ -20,17 +20,17 @@ if (savedTheme === 'dark') {
             // work with burger
 
 const burgerButton = document.querySelector('.menu_button');
-const headerNavigation = document.querySelector('.header_nav');
+const headerNav = document.querySelector('.header_nav');
 const allMenuLinks = document.querySelectorAll('.header_list .link');
 
 function toggleMobileMenu() {
-    headerNavigation.classList.toggle('is-open');
+    headerNav.classList.toggle('is-open');
     document.body.classList.toggle('no-scroll');
     burgerButton.classList.toggle('is-open');
 }
 
 function closeMobileMenu() {
-    headerNavigation.classList.remove('is-open');
+    headerNav.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
     burgerButton.classList.remove('is-open');
 }
@@ -45,6 +45,28 @@ window.addEventListener('resize', () => {
         closeMobileMenu();
     }
 }); 
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+
+        const headerNav = document.querySelector('.header_nav');
+        const menuButton = document.querySelector('.menu_button');
+        
+        if (headerNav && headerNav.classList.contains('is-open')) {
+            headerNav.classList.remove('is-open');
+            menuButton.classList.remove('is-open');
+            document.body.classList.remove('no-scroll');
+        }
+
+        const modal = document.getElementById('product-modal');
+        if (modal && modal.classList.contains('is-active')) {
+            modal.classList.remove('is-active'); 
+            document.body.classList.remove('no-scroll'); 
+        }
+    }
+});
+
+
 
 
             // work with slider
@@ -70,26 +92,80 @@ function moveSlider() {
         });
     }
 }
-    if (btnNext) {
+
+if (btnNext) {
     btnNext.addEventListener('click', () => {
         if (currentSlideIndex < sliderSlides.length - 1) {
             currentSlideIndex++;
+            moveSlider();
         } else {
             currentSlideIndex = 0;
+            
+            sliderTrack.style.transition = 'none';
+            moveSlider();
+            
+            setTimeout(() => {
+                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+            }, 20);
         }
-        moveSlider();
     });
 }
-    if (btnPrev) {
+
+if (btnPrev) {
     btnPrev.addEventListener('click', () => {
         if (currentSlideIndex > 0) {
             currentSlideIndex--;
+            moveSlider();
         } else {
             currentSlideIndex = sliderSlides.length - 1;
+            
+            sliderTrack.style.transition = 'none';
+            moveSlider();
+            
+            setTimeout(() => {
+                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+            }, 20);
         }
-        moveSlider();
     });
 }
+
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (sliderTrack) {
+    sliderTrack.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+    sliderTrack.addEventListener('touchend', (event) => {
+        touchEndX = event.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+    
+    if (swipeDistance < -50) {
+        if (currentSlideIndex < sliderSlides.length - 1) {
+            currentSlideIndex++;
+        } else {
+            currentSlideIndex = 0; 
+        }
+        moveSlider();
+    }
+    
+    if (swipeDistance > 50) {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+        } else {
+            currentSlideIndex = sliderSlides.length - 1; 
+        }
+        moveSlider();
+    }
+}
+
+
 
             // catalog coffee/tea/desserts
 
