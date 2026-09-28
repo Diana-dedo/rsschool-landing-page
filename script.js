@@ -45,35 +45,35 @@ if (burgerButton) {
     burgerButton.addEventListener('click', toggleMobileMenu); 
 }
 
-if (allMenuLinks.length > 0) {
-    allMenuLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            const targetId = link.getAttribute('href');
+// if (allMenuLinks.length > 0) {
+//     allMenuLinks.forEach(link => {
+//         link.addEventListener('click', (event) => {
+//             const targetId = link.getAttribute('href');
             
-            closeMobileMenu();
+//             closeMobileMenu();
 
-            if (window.location.pathname.includes('catalog.html') && targetId && targetId.includes('index.html')) {
-                event.preventDefault(); 
+//             if (window.location.pathname.includes('catalog.html') && targetId && targetId.includes('index.html')) {
+//                 event.preventDefault(); 
                 
-                const hashIndex = targetId.indexOf('#');
-                const pureHash = hashIndex !== -1 ? targetId.substring(hashIndex) : '';
+//                 const hashIndex = targetId.indexOf('#');
+//                 const pureHash = hashIndex !== -1 ? targetId.substring(hashIndex) : '';
                 
-                window.location.href = './index.html' + pureHash;
-                return;
-            }
+//                 window.location.href = './index.html' + pureHash;
+//                 return;
+//             }
 
-            if (targetId && targetId.startsWith('#')) {
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    event.preventDefault(); 
-                    setTimeout(() => {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }, 50);
-                }
-            }
-        });
-    });
-}
+//             if (targetId && targetId.startsWith('#')) {
+//                 const targetSection = document.querySelector(targetId);
+//                 if (targetSection) {
+//                     event.preventDefault(); 
+//                     setTimeout(() => {
+//                         targetSection.scrollIntoView({ behavior: 'smooth' });
+//                     }, 50);
+//                 }
+//             }
+//         });
+//     });
+// }
 
 
 
