@@ -250,6 +250,69 @@ if (productsContainer) {
 
     // pop-up
 
+    function updateTotalPrice() {
+    const basePrice = Number(currentProduct.price);
+    const totalPrice = basePrice + selectedSizeAddPrice + selectedAdditivesPrice;
+    
+    const totalPriceElement = document.getElementById('modal-total-price');
+    if (totalPriceElement) {
+        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+}
+
+function initModalInteractivity() {
+    const sizeButtons = modalBody.querySelectorAll('.size-btn');
+    const additiveButtons = modalBody.querySelectorAll('.additive-btn');
+
+    sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            selectedSizeAddPrice = Number(btn.dataset.sizePrice);
+            updateTotalPrice();
+        });
+    });
+
+    additiveButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active'); 
+            
+            selectedAdditivesPrice = 0;
+            modalBody.querySelectorAll('.additive-btn.active').forEach(activeBtn => {
+                selectedAdditivesPrice += Number(activeBtn.dataset.additivePrice);
+            });
+            
+            updateTotalPrice();
+        });
+    });
+}
+
+if (productsContainer && modal) {
+    productsContainer.addEventListener('click', (e) => {
+        const card = e.target.closest('.catalog_coffee');
+        if (card) {
+            const productName = card.dataset.id;
+            const productData = allProducts.find(item => item.name === productName);
+            
+            if (productData) {
+                renderModalContent(productData);
+                modal.classList.add('is-active');
+                document.body.classList.add('no-scroll');
+            }
+        }
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('is-active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+}
+}
+
+
 const modal = document.getElementById('product-modal');
 const modalBody = document.getElementById('modal-body-content');
 const modalCloseBtn = document.getElementById('modal-close');
@@ -330,64 +393,3 @@ function renderModalContent(product) {
     }
 }
 
-function updateTotalPrice() {
-    const basePrice = Number(currentProduct.price);
-    const totalPrice = basePrice + selectedSizeAddPrice + selectedAdditivesPrice;
-    
-    const totalPriceElement = document.getElementById('modal-total-price');
-    if (totalPriceElement) {
-        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
-    }
-}
-
-function initModalInteractivity() {
-    const sizeButtons = modalBody.querySelectorAll('.size-btn');
-    const additiveButtons = modalBody.querySelectorAll('.additive-btn');
-
-    sizeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sizeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            selectedSizeAddPrice = Number(btn.dataset.sizePrice);
-            updateTotalPrice();
-        });
-    });
-
-    additiveButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active'); 
-            
-            selectedAdditivesPrice = 0;
-            modalBody.querySelectorAll('.additive-btn.active').forEach(activeBtn => {
-                selectedAdditivesPrice += Number(activeBtn.dataset.additivePrice);
-            });
-            
-            updateTotalPrice();
-        });
-    });
-}
-
-if (productsContainer && modal) {
-    productsContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.catalog_coffee');
-        if (card) {
-            const productName = card.dataset.id;
-            const productData = allProducts.find(item => item.name === productName);
-            
-            if (productData) {
-                renderModalContent(productData);
-                modal.classList.add('is-active');
-                document.body.classList.add('no-scroll');
-            }
-        }
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('is-active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-}
-}
