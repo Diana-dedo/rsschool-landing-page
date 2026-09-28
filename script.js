@@ -178,8 +178,27 @@ const productsContainer = document.getElementById('products-container');
 const categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
 const loadMoreBtn = document.getElementById('load-more-btn');
 
+if (document.getElementById('products-container') || window.location.pathname.includes('catalog.html')) {
+
+    fetch('/rsschool-landing-page/products.json')
+        .then(response => response.json())
+        .then(data => {
+            allProducts = data; 
+            
+            if (productsContainer) {
+                categoryButtons.forEach(btn => {
+                    if (btn.dataset.category === 'coffee') btn.classList.add('active');
+                    else btn.classList.remove('active');
+                });
+                displayProducts('coffee'); 
+            }
+        })
+        .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
+}
+
 if (productsContainer) { 
     const modal = document.getElementById('product-modal');
+
     const modalBody = document.getElementById('modal-body-content');
 
     let allProducts = []; 

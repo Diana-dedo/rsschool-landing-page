@@ -331,6 +331,15 @@ p {
     display: block;
 }
 
+.button_menu .logo-img_light,
+.button_menu .logo-img_dark-theme,
+.button_menu .logo-img_light-theme {
+    display: none;
+}
+.button_menu .logo-img_dark {
+    display: block;
+}
+
 .button_menu:hover .logo-img_dark {
     display: none;
 }
@@ -339,10 +348,10 @@ p {
 }
 
 .dark-theme .button_menu .logo-img_dark,
-.dark-theme .button_menu .logo-img_light {
-    display: none !important;
+.dark-theme .button_menu .logo-img_light,
+.dark-theme .button_menu .logo-img_light-theme {
+    display: none;
 }
-
 .dark-theme .button_menu .logo-img_dark-theme {
     display: block;
 }
