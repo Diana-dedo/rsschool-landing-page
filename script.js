@@ -1,44 +1,72 @@
-            // work with dark/light theme 
+                // work with theme
+
 
 const themeToggle = document.querySelector('.change_dark');
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    
-    if (document.body.classList.contains('dark-theme')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+}
 
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
 }
 
-            // work with burger
+                // work with burger
 
 const burgerButton = document.querySelector('.menu_button');
 const headerNav = document.querySelector('.header_nav');
 const allMenuLinks = document.querySelectorAll('.header_list .link');
 
 function toggleMobileMenu() {
-    headerNav.classList.toggle('is-open');
-    document.body.classList.toggle('no-scroll');
-    burgerButton.classList.toggle('is-open');
+    if (headerNav && burgerButton) {
+        headerNav.classList.toggle('is-open');
+        document.body.classList.toggle('no-scroll');
+        burgerButton.classList.toggle('is-open');
+    }
 }
 
 function closeMobileMenu() {
-    headerNav.classList.remove('is-open');
-    document.body.classList.remove('no-scroll');
-    burgerButton.classList.remove('is-open');
+    if (headerNav && burgerButton) {
+        headerNav.classList.remove('is-open');
+        document.body.classList.remove('no-scroll');
+        burgerButton.classList.remove('is-open');
+    }
 }
 
-burgerButton.addEventListener('click', toggleMobileMenu); 
+if (burgerButton) {
+    burgerButton.addEventListener('click', toggleMobileMenu); 
+}
+
+if (allMenuLinks.length > 0) {
     allMenuLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-});
+        link.addEventListener('click', (event) => {
+            closeMobileMenu();
+
+            const targetId = link.getAttribute('href');
+            
+            if (targetId && targetId.includes('#')) {
+                const hashIndex = targetId.indexOf('#');
+                const pureHash = targetId.substring(hashIndex);
+                
+                const targetSection = document.querySelector(pureHash);
+                if (targetSection) {
+                    event.preventDefault();
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                }
+            }
+        });
+    });
+}
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 769) {
@@ -48,16 +76,7 @@ window.addEventListener('resize', () => {
 
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' || event.key === 'Esc') {
-
-        const headerNav = document.querySelector('.header_nav');
-        const menuButton = document.querySelector('.menu_button');
-        
-        if (headerNav && headerNav.classList.contains('is-open')) {
-            headerNav.classList.remove('is-open');
-            menuButton.classList.remove('is-open');
-            document.body.classList.remove('no-scroll');
-        }
-
+        closeMobileMenu();
         const modal = document.getElementById('product-modal');
         if (modal && modal.classList.contains('is-active')) {
             modal.classList.remove('is-active'); 
@@ -66,268 +85,189 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-
-
-
-            // work with slider
+                // work with slider
 
 const sliderTrack = document.querySelector('.slider-track');
-const sliderSlides = document.querySelectorAll('.choose_coffee');
-const sliderDots = document.querySelectorAll('.slider-dot');
-const btnPrev = document.querySelector('.go_back_btn');
-const btnNext = document.querySelector('.go_ahead_btn');
 
-let currentSlideIndex = 0;
-function moveSlider() {
-    if (sliderTrack) {
-        sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+if (sliderTrack) { 
+    const sliderSlides = document.querySelectorAll('.choose_coffee');
+    const sliderDots = document.querySelectorAll('.slider-dot');
+    const btnPrev = document.querySelector('.go_back_btn');
+    const btnNext = document.querySelector('.go_ahead_btn');
+
+    let currentSlideIndex = 0;
+
+    function moveSlider() {
+        if (sliderTrack) {
+            sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        }
+        if (sliderDots.length > 0) {
+            sliderDots.forEach((dot, index) => {
+                if (index === currentSlideIndex) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
     }
-    if (sliderDots.length > 0) {
-        sliderDots.forEach((dot, index) => {
-            if (index === currentSlideIndex) {
-                dot.classList.add('active');
+
+    if (btnNext && sliderSlides.length > 0) {
+        btnNext.addEventListener('click', () => {
+            if (currentSlideIndex < sliderSlides.length - 1) {
+                currentSlideIndex++;
+                moveSlider();
             } else {
-                dot.classList.remove('active');
+                currentSlideIndex = 0;
+                sliderTrack.style.transition = 'none';
+                moveSlider();
+                setTimeout(() => {
+                    sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
             }
         });
     }
-}
 
-if (btnNext) {
-    btnNext.addEventListener('click', () => {
-        if (currentSlideIndex < sliderSlides.length - 1) {
-            currentSlideIndex++;
-            moveSlider();
-        } else {
-            currentSlideIndex = 0;
-            
-            sliderTrack.style.transition = 'none';
-            moveSlider();
-            
-            setTimeout(() => {
-                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
-            }, 20);
-        }
-    });
-}
+    if (btnPrev && sliderSlides.length > 0) {
+        btnPrev.addEventListener('click', () => {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                moveSlider();
+            } else {
+                currentSlideIndex = sliderSlides.length - 1;
+                sliderTrack.style.transition = 'none';
+                moveSlider();
+                setTimeout(() => {
+                    sliderTrack.style.transition = 'transform 0.5s ease-in-out';
+                }, 20);
+            }
+        });
+    }
 
-if (btnPrev) {
-    btnPrev.addEventListener('click', () => {
-        if (currentSlideIndex > 0) {
-            currentSlideIndex--;
-            moveSlider();
-        } else {
-            currentSlideIndex = sliderSlides.length - 1;
-            
-            sliderTrack.style.transition = 'none';
-            moveSlider();
-            
-            setTimeout(() => {
-                sliderTrack.style.transition = 'transform 0.5s ease-in-out';
-            }, 20);
-        }
-    });
-}
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-
-let touchStartX = 0;
-let touchEndX = 0;
-
-if (sliderTrack) {
     sliderTrack.addEventListener('touchstart', (event) => {
         touchStartX = event.changedTouches[0].screenX;
     }, { passive: true });
+
     sliderTrack.addEventListener('touchend', (event) => {
         touchEndX = event.changedTouches[0].screenX;
-        handleSwipe();
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (swipeDistance < -50 && sliderSlides.length > 0) {
+            if (currentSlideIndex < sliderSlides.length - 1) currentSlideIndex++;
+            else currentSlideIndex = 0; 
+            moveSlider();
+        }
+        if (swipeDistance > 50 && sliderSlides.length > 0) {
+            if (currentSlideIndex > 0) currentSlideIndex--;
+            else currentSlideIndex = sliderSlides.length - 1; 
+            moveSlider();
+        }
     }, { passive: true });
 }
 
-function handleSwipe() {
-    const swipeDistance = touchEndX - touchStartX;
-    
-    if (swipeDistance < -50) {
-        if (currentSlideIndex < sliderSlides.length - 1) {
-            currentSlideIndex++;
-        } else {
-            currentSlideIndex = 0; 
-        }
-        moveSlider();
-    }
-    
-    if (swipeDistance > 50) {
-        if (currentSlideIndex > 0) {
-            currentSlideIndex--;
-        } else {
-            currentSlideIndex = sliderSlides.length - 1; 
-        }
-        moveSlider();
-    }
-}
-
-
-
-            // catalog coffee/tea/desserts
+                // work with catalog
 
 
 const productsContainer = document.getElementById('products-container'); 
 const categoryButtons = document.querySelectorAll('.coffee_tea_dessert'); 
 const loadMoreBtn = document.getElementById('load-more-btn');
 
-let allProducts = []; 
-let currentCategory = 'coffee';
-
-function createCardHTML(product) {
-    return `
-        <div class="catalog_coffee" data-id="${product.name}"> 
-            <div class="coffee_img_wrap">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="coffee_text_block">
-                <h3>${product.name}</h3>
-                <p class="p_dark">${product.description}</p>
-                <h3 class="price">$${product.price}</h3>
-            </div>
-        </div>
-    `;
-}
-
-function displayProducts(categoryName, showAll = false) {
-    currentCategory = categoryName;
-    productsContainer.innerHTML = '';
-    
-    const filtered = allProducts.filter(item => item.category === categoryName);
-    
-    const isMobile = window.innerWidth <= 768;
-    
-    let productsToRender = filtered;
-    
-    if (isMobile && filtered.length > 4 && !showAll) {
-        productsToRender = filtered.slice(0, 4); 
-        if (loadMoreBtn) loadMoreBtn.style.display = 'block'; 
-    } else {
-        if (loadMoreBtn) loadMoreBtn.style.display = 'none'; 
-    }
-
-    productsToRender.forEach(product => {
-        productsContainer.innerHTML += createCardHTML(product);
-    });
-}
-
-
 if (productsContainer) { 
+    const modal = document.getElementById('product-modal');
+    const modalBody = document.getElementById('modal-body-content');
 
-    fetch('./products.json')
-        .then(response => response.json())
-        .then(data => {
-            allProducts = data; 
-            displayProducts('coffee'); 
-        })
-        .catch(error => console.error('Ошибка загрузки данных из JSON:', error));
+    let allProducts = []; 
+    let currentCategory = 'coffee';
+    let currentProduct = null; 
+    let selectedSizeAddPrice = 0.00; 
+    let selectedAdditivesPrice = 0.00; 
 
-
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            categoryButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
-
-            const selectedCategory = button.dataset.category;
-            displayProducts(selectedCategory); 
-        });
-    });
-
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', () => {
-            displayProducts(currentCategory, true); 
-        });
+    function createCardHTML(product) {
+        return `
+            <div class="catalog_coffee" data-id="${product.name}"> 
+                <div class="coffee_img_wrap">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="coffee_text_block">
+                    <h3>${product.name}</h3>
+                    <p class="p_dark">${product.description}</p>
+                    <h3 class="price">$${product.price}</h3>
+                </div>
+            </div>
+        `;
     }
 
-    window.addEventListener('resize', () => {
-        displayProducts(currentCategory);
-    });
+    function displayProducts(categoryName, showAll = false) {
+        currentCategory = categoryName;
+        productsContainer.innerHTML = '';
+        
+        const filtered = allProducts.filter(item => item.category === categoryName);
+        const isMobile = window.innerWidth <= 768;
+        let productsToRender = filtered;
+        
+        if (isMobile && filtered.length > 4 && !showAll) {
+            productsToRender = filtered.slice(0, 4); 
+            if (loadMoreBtn) loadMoreBtn.style.display = 'block'; 
+        } else {
+            if (loadMoreBtn) loadMoreBtn.style.display = 'none'; 
+        }
 
-    // pop-up
+        productsToRender.forEach(product => {
+            productsContainer.innerHTML += createCardHTML(product);
+        });
+    }
 
     function updateTotalPrice() {
-    const basePrice = Number(currentProduct.price);
-    const totalPrice = basePrice + selectedSizeAddPrice + selectedAdditivesPrice;
-    
-    const totalPriceElement = document.getElementById('modal-total-price');
-    if (totalPriceElement) {
-        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+        if (!currentProduct) return;
+        const basePrice = Number(currentProduct.price);
+        const totalPrice = basePrice + selectedSizeAddPrice + selectedAdditivesPrice;
+        const totalPriceElement = document.getElementById('modal-total-price');
+        if (totalPriceElement) {
+            totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+        }
     }
-}
 
-function initModalInteractivity() {
-    const sizeButtons = modalBody.querySelectorAll('.size-btn');
-    const additiveButtons = modalBody.querySelectorAll('.additive-btn');
+    function initModalInteractivity() {
+        if (!modalBody) return;
+        const sizeButtons = modalBody.querySelectorAll('.size-btn');
+        const additiveButtons = modalBody.querySelectorAll('.additive-btn');
+        const closeBtnClick = modalBody.querySelector('#modal-btn-close-click');
 
-    sizeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sizeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            selectedSizeAddPrice = Number(btn.dataset.sizePrice);
-            updateTotalPrice();
-        });
-    });
-
-    additiveButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active'); 
-            
-            selectedAdditivesPrice = 0;
-            modalBody.querySelectorAll('.additive-btn.active').forEach(activeBtn => {
-                selectedAdditivesPrice += Number(activeBtn.dataset.additivePrice);
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                selectedSizeAddPrice = Number(btn.dataset.sizePrice);
+                updateTotalPrice();
             });
-            
-            updateTotalPrice();
         });
-    });
-}
 
-if (productsContainer && modal) {
-    productsContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.catalog_coffee');
-        if (card) {
-            const productName = card.dataset.id;
-            const productData = allProducts.find(item => item.name === productName);
-            
-            if (productData) {
-                renderModalContent(productData);
-                modal.classList.add('is-active');
-                document.body.classList.add('no-scroll');
-            }
+        additiveButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active'); 
+                selectedAdditivesPrice = 0;
+                modalBody.querySelectorAll('.additive-btn.active').forEach(activeBtn => {
+                    selectedAdditivesPrice += Number(activeBtn.dataset.additivePrice);
+                });
+                updateTotalPrice();
+            });
+        });
+
+        if (closeBtnClick) {
+            closeBtnClick.addEventListener('click', () => {
+                if (modal) modal.classList.remove('is-active');
+                document.body.classList.remove('no-scroll');
+            });
         }
-    });
+    }
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('is-active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-}
-}
+    function renderModalContent(product) {
+        currentProduct = product;
+        selectedSizeAddPrice = 0.00;
+        selectedAdditivesPrice = 0.00;
 
+        let sizesHTML = '';
 
-const modal = document.getElementById('product-modal');
-const modalBody = document.getElementById('modal-body-content');
-const modalCloseBtn = document.getElementById('modal-close');
-
-let currentProduct = null; 
-let selectedSizeAddPrice = 0.00; 
-let selectedAdditivesPrice = 0.00; 
-
-function renderModalContent(product) {
-    currentProduct = product;
-    
-    selectedSizeAddPrice = 0.00;
-    selectedAdditivesPrice = 0.00;
-
-    let sizesHTML = '';
     Object.keys(product.sizes).forEach((key, index) => {
         const sizeInfo = product.sizes[key];
         const isActive = index === 0 ? 'active' : ''; 
@@ -392,4 +332,4 @@ function renderModalContent(product) {
         });
     }
 }
-
+}
